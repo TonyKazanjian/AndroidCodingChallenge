@@ -1,0 +1,15 @@
+{"namelist": {
+    "nameArray": [
+      {"firstname": "Tony",
+       "lastname": "Kazanjian"},
+      {"firstname": "Ryan",
+       "lastname": "Simon"},
+      {"firstname": "Wade",
+       "lastname": "Wilson"},
+      {"firstname": "Steve",
+       "lastname": "Rogers"},
+      {"firstname": "Bruce",
+       "lastname": "Banner"}
+    ]
+  }
+}
