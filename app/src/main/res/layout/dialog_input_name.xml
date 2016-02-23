@@ -4,23 +4,13 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-    <android.support.design.widget.TextInputLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/first_name_input"
-            android:hint = "Enter first name"
-            android:padding="16dp"
-            android:textSize="20sp"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/first_name_input"
+        android:hint = "Enter first name"
+        android:padding="16dp"
+        android:textSize="20sp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -29,6 +19,5 @@
         android:hint = "Enter last name"
         android:padding="16dp"
         android:textSize="20sp"/>
-    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>
