@@ -5,7 +5,7 @@ Questions:
 
 1. What is the major difference between an abstract class and an interface?
 
-An abstract class acts as a template which other classes can extend from. It is never instantiated on its own, but its properties are inherited by its child class. An interface is used to add specific functionality to any class. When it's implemented into a class, all it's methods must be as well.The implementing class can then define what happens in the interface's methods. A concrete child classcan only extend one abstract class, but can implement as many methods as it needs.
+An abstract class acts as a template which other classes can extend from. It is never instantiated on its own, but its properties are inherited by its child class. An interface is used to add specific functionality to any class. When it's implemented into a class, all it's methods must be as well. The implementing class can then define what happens in the interface's methods. A concrete child class can only extend one abstract class, but can implement as many methods as it needs.
 
 2. Why is Java 7’s class inheritance flawed?
 
@@ -35,5 +35,5 @@ However, calling AsyncTask.cancel() doesn't actually cancel the task. To do that
 
 One thing that can happen is that device rotation can repeatedly fire off new AsyncTasks unless setRetainInstance(true) is called on the Fragment in which AsyncTask is executing.
 
-A way to manage both these issues is to use AsyncTaskLoader instead. The Loader keeps data among configuration changes, so it will not try to fetch data again when a lifecycle is affected by rotation
+A way to manage both these issues is to use AsyncTaskLoader instead. The Loader keeps data among configuration changes, so it will not try to fetch data again when a lifecycle is affected by rotation.
       
