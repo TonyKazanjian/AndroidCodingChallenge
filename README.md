@@ -28,3 +28,12 @@ You would define a interface in the Fragment and then create a stub method, whic
 Yes you can, as long as you don't want any added UI elements running on their own lifecycle within the same screen. It's easy to pass information amongst multiple Activities, so if your app was made up of separate screens that each did an individual thing, you wouldn't need any Fragments. 
 
 6. What makes an AsyncTask such an annoyance to Android developers? Detail some of the issues with AsyncTask, and how to potentially solve them.
+
+Developers need to be responsible for managing AsyncTask throughout an Activity or Fragment's lifecycle. AsyncTask can keep on running in the background if its task has not finished, even if the Activity it is in has already finished. This can create memory leaks and waste resources like the CPU or the device's battery. To fix this, we can override a callback to the Activity's lifecycle when it is finishing, performing a check to see if the background task is running at that point in the lifecycle. If it is, we can cancel that task. 
+
+However, calling AsyncTask.cancel() doesn't actually cancel the task. To do that, we need to check if AsyncTask.isCancelled() is true while it is operating, and then cancel the task if so. 
+
+One thing that can happen is that device rotation can repeatedly fire off new AsyncTasks unless setRetainInstance(true) is called on the Fragment in which AsyncTask is executing.
+
+A way to manage both these issues is to use AsyncTaskLoader instead. The Loader keeps data among configuration changes, so it will not try to fetch data again when a lifecycle is affected by rotation
+      
