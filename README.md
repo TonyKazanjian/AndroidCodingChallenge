@@ -12,10 +12,19 @@ An abstract class acts as a template which other classes can extend from. It is 
 Changes within a superclass, e.g. in subsequent releases, can potentially break a subclass. For example, If a subclass overrides a superclass method but invokes the superclass's method within the overridden one (using super.methodCall(...)), the results of that method may not be as expected.
 
 3. What are the major differences between Activities and Fragments?
-4. When using Fragments, how do you communicate back to their hosting
-Activity?
-5. Can you make an entire app without ever using Fragments? Why or why
-not?
-6. What makes an AsyncTask such an annoyance to Android developers?
-Detail some of the issues with AsyncTask, and how to potentially solve
-them.
+
+An Activity is basically a screen that contains UI elements presented to the user. A Fragment is essentially a UI element that is hosted by an Activity, so there can be multiple Fragments within an Activity itself. 
+
+One of the main differences between Activities and Fragments is how they are added and removed to the backstack. If a user starts a new Activity from the previous one, the previous Activity is stopped but preserved in the backstack. When the user presses the "back" button, their current Activity is destroyed and the previous one is resumed from its previous state. A Fragment needs a FragmentManager to manage these transactions, and a specific call of addToBackstack() in order for the Fragment instance to be saved.
+
+Another very crucial difference is that Activities and Fragments both have separate lifecycles. While the lifecycle of a Fragment is tied to the Activity it's attached to (i.e. onPause() in the Activity will call the Fragment's onPause()), there are extra callbacks in the Fragment's lifecycle that manage how the Fragment is built and destroyed within the Activity.
+
+4. When using Fragments, how do you communicate back to their hosting Activity?
+
+You would define a interface in the Fragment and then create a stub method, which would also be called somewhere within the Fragment's code (i.e. an OK button's onClick method). The host Activity would then implement the Fragment's interface and override it's methods to do whatever is needed with the information that was passed into the Fragment's invocation of the interface methods.
+
+5. Can you make an entire app without ever using Fragments? Why or why not?
+
+Yes you can, as long as you don't want any added UI elements running on their own lifecycle within the same screen. It's easy to pass information amongst multiple Activities, so if your app was made up of separate screens that each did an individual thing, you wouldn't need any Fragments. 
+
+6. What makes an AsyncTask such an annoyance to Android developers? Detail some of the issues with AsyncTask, and how to potentially solve them.
