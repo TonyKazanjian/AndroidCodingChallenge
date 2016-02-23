@@ -27,7 +27,9 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameHolder> {
 
     @Override
     public void onBindViewHolder(NameHolder holder, int position) {
-        holder.mNameView.setText(mNames.get(position).getLastName() + ", " + mNames.get(position).getFirstName());
+        Name name = mNames.get(position);
+        capitalizeName(name);
+        holder.mNameView.setText(name.getLastName() + ", " + name.getFirstName());
 
     }
 
@@ -39,6 +41,16 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameHolder> {
     public void addName(Name name){
         mNames.add(name);
         notifyItemInserted(mNames.size()-1);
+    }
+
+    private Name capitalizeName(Name name) {
+        String firstName = name.getFirstName();
+        String lastName = name.getLastName();
+
+        name.setFirstName(String.valueOf(firstName.charAt(0)).toUpperCase() + firstName.subSequence(1, firstName.length()));
+        name.setLastName(String.valueOf(lastName.charAt(0)).toUpperCase() + lastName.subSequence(1, lastName.length()));
+
+        return name;
     }
 
     protected static class NameHolder extends RecyclerView.ViewHolder{
